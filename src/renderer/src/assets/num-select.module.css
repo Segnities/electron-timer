@@ -1,0 +1,34 @@
+.select-list {
+   display: flex;
+   flex-direction: column;
+   padding: 0 10px;
+   position: relative;
+}
+
+.select-list span {
+   margin: 3px 0;
+   font-size: 2.3rem;  
+   position: relative;
+}
+
+.range-1 {
+   color: #B0B0B0;
+}
+
+.range-2 {
+   color: #505050;
+}
+
+.selected {
+   background-color: grey;
+   width: 200%; 
+   height: 200%; 
+   inset: -50%;
+   position: absolute; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: -1; 
+   border-radius: 11px;
+}
+

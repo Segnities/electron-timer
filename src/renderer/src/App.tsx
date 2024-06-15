@@ -1,10 +1,13 @@
+import SelectBar from "./components/SelectBar"
 import Timer from "./components/Timer"
 
 function App(): JSX.Element {
   return (
     <>
-      <Timer/>
-      <div></div>
+      <Timer />
+      <div>
+        <SelectBar />
+      </div>
     </>
   )
 }

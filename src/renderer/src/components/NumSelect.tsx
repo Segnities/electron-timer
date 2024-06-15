@@ -1,21 +1,24 @@
+import getNextRangeNum from "@renderer/utils/getNextRangeNum";
+import getPrevRangeNum from "@renderer/utils/getPrevRangeNum";
 import toRangeNum from "@renderer/utils/toRangeNum";
-import { useState } from "react";
+
+import styles from "../assets/num-select.module.css";
 
 interface Props {
    min: number;
    max: number;
+   value: number;
+   setValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
 function NumSelect(props: Props): JSX.Element {
-   const {min, max} = props;
-   const [value, setValue] = useState<number>(min);
-
-   return <div>
-      <span>{toRangeNum(value)}</span>
-      <span>{toRangeNum(value)}</span>
-      <span>{toRangeNum(value)}</span>
-      <span>{toRangeNum(value)}</span>
-      <span>{toRangeNum(value)}</span>
+   const { min, max, value, setValue } = props;
+   return <div className={styles["select-list"]}>
+      <span className={styles["range-2"]}>{getPrevRangeNum(value, min, max, 2)}</span>
+      <span className={styles["range-1"]}>{getPrevRangeNum(value, min, max, 1)}</span>
+      <span className={styles["selected"]}>{toRangeNum(value)}</span>
+      <span className={styles["range-1"]}>{getNextRangeNum(value, min, max, 1)}</span>
+      <span className={styles["range-2"]}>{getNextRangeNum(value, min, max, 2)}</span>
    </div>
 }
 

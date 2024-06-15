@@ -6,6 +6,12 @@
    box-sizing: border-box;
 }
 
+.timer-container {
+   position: relative;
+   width: 100vw;
+   height: 50vh;
+}
+
 .circle {
    position: absolute;
    top: 50%;
@@ -13,7 +19,7 @@
    transform: translate(-50%, -50%);
    width: 250px;
    height: 250px;
-   border: 5px solid #FFFFFF;
+   border: 5px solid #807777;
    box-shadow: 0 0 0 5px #4973ff;
    border-radius: 50%;
    overflow: hidden;
