@@ -8,9 +8,9 @@ function SelectBar(): JSX.Element {
    const [hours, setHours] = useState<number>(0);
 
    return <div className={styles["select-bar"]}>
-      <NumSelect min={0} max={24} value={hours} setValue={setHours} />
-      <NumSelect min={0} max={60} value={minutes} setValue={setMinutes} />
-      <NumSelect min={0} max={60} value={seconds} setValue={setSeconds} />
+      <NumSelect min={0} max={23} value={hours} setValue={setHours} />
+      <NumSelect min={0} max={59} value={minutes} setValue={setMinutes} />
+      <NumSelect min={0} max={59} value={seconds} setValue={setSeconds} />
    </div>
 }
 

@@ -8,7 +8,7 @@ export default function getPrevRangeNum(
 ): string {
    const diff = value - range;
    if (diff < min) {
-      return toRangeNum(max + diff);
+      return toRangeNum(max - (min - diff - 1));
    }
    return toRangeNum(diff);
 }
