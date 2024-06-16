@@ -6,6 +6,7 @@ import styles from "../assets/num-select.module.css";
 import React, { useEffect, useState } from "react";
 
 interface Props {
+   name: 'seconds' | 'minutes' | 'hours';
    min: number;
    max: number;
    value: number;
@@ -21,12 +22,19 @@ function NumSelect(props: Props): JSX.Element {
    const [negative1Range, setNegative1Range] = useState<string>(getPrevRangeNum(value, min, max, 1));
    const [negative2Range, setNegative2Range] = useState<string>(getPrevRangeNum(value, min, max, 2));
 
+   const playSoundDir = () => {
+      const audio = new Audio('/audio/scroll.mp3');
+      audio.volume = 0.14;
+      audio.play();
+   }
 
    const handleMouseWheel = (event: React.WheelEvent):void => {
       event.preventDefault();
       if (event.deltaY < 0) {
+         playSoundDir();
          setValue(prevValue => parseInt(getPrevRangeNum(prevValue, min, max, 1)));
       } else {
+         playSoundDir();
          setValue(prevValue => parseInt(getNextRangeNum(prevValue, min, max, 1)));
       }
    }
