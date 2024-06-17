@@ -61,6 +61,20 @@
    animation: sea 10s linear infinite;
 }
 
+.state-container {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.state-container span {
+   font-size: 3em;
+   color: black;
+   z-index: 5;
+}
+
 @keyframes sea {
    0% {
       transform: translate(-50%, -75%) rotate(0deg);

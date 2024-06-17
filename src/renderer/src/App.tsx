@@ -1,14 +1,16 @@
-import SelectBar from "./components/SelectBar"
-import Timer from "./components/Timer"
+import { useSelector } from 'react-redux'
+import ControlPanel from './components/ControlPanel'
+import SelectBar from './components/SelectBar'
+import Timer from './components/Timer'
+import { RootState } from './store'
 
 function App(): JSX.Element {
+  const { started } = useSelector((state: RootState) => state.timer)
   return (
-    <>
-      <Timer />
-      <div>
-        <SelectBar />
-      </div>
-    </>
+    <div>
+      {started ? <Timer /> : <SelectBar />}
+      <ControlPanel />
+    </div>
   )
 }
 

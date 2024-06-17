@@ -1,13 +1,13 @@
 .select-list {
    display: flex;
    flex-direction: column;
-   padding: 0 10px;
+   padding: 0 13px;
    position: relative;
 }
 
 .select-list span {
-   margin: 3px 0;
-   font-size: 2.3rem;  
+   margin: 7px 0;
+   font-size: 2.8rem;  
    position: relative;
 }
 
@@ -29,6 +29,6 @@
    justify-content: center;
    align-items: center;
    z-index: -1; 
-   border-radius: 11px;
+   border-radius: 6px;
 }
 
