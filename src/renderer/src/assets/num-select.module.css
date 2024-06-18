@@ -5,10 +5,20 @@
    position: relative;
 }
 
+
+span {
+   border: 1px solid transparent;
+}
+
 .select-list span {
    margin: 7px 0;
    font-size: 2.8rem;  
    position: relative;
+}
+
+.focused {
+   border: 1px solid white;
+   z-index: 10;
 }
 
 .range-1 {
