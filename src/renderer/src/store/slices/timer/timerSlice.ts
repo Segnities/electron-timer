@@ -28,6 +28,15 @@ export const timerSlice = createSlice({
       state.minutes = action.payload.minutes
       state.seconds = action.payload.seconds
     },
+    setHours(state, action: PayloadAction<number>): void {
+      state.hours = action.payload
+    },
+    setMinutes(state, action: PayloadAction<number>): void {
+      state.minutes = action.payload
+    },
+    setSeconds(state, action: PayloadAction<number>): void {
+      state.seconds = action.payload
+    },
     resetTimer(state): void {
       state.hours = 0
       state.minutes = 0
@@ -43,5 +52,14 @@ export const timerSlice = createSlice({
   }
 })
 
-export const { resetTimer, setTime, startTimer, stopTimer, continueTimer } = timerSlice.actions
+export const {
+  resetTimer,
+  setTime,
+  setHours,
+  setMinutes,
+  setSeconds,
+  startTimer,
+  stopTimer,
+  continueTimer
+} = timerSlice.actions
 export default timerSlice.reducer

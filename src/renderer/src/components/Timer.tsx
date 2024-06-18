@@ -6,9 +6,9 @@ import toRangeNum from '@renderer/utils/toRangeNum'
 
 function Timer(): JSX.Element {
   const { hours, minutes, seconds } = useSelector((state: RootState) => state.timer)
-  const [hoursState, setHoursState] = useState<number>(hours)
-  const [minutesState, setMinutesState] = useState<number>(minutes)
-  const [secondsState, setSecondsState] = useState<number>(seconds)
+  const [hoursState] = useState<number>(hours)
+  const [minutesState] = useState<number>(minutes)
+  const [secondsState] = useState<number>(seconds)
 
   return (
     <div className={styles['timer-container']}>

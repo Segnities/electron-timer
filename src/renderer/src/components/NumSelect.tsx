@@ -4,6 +4,8 @@ import toRangeNum from '@renderer/utils/toRangeNum'
 
 import styles from '../assets/num-select.module.css'
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setHours, setMinutes, setSeconds } from '@renderer/store/slices/timer/timerSlice'
 
 interface Props {
   name: 'seconds' | 'minutes' | 'hours'
@@ -14,7 +16,8 @@ interface Props {
 }
 
 function NumSelect(props: Props): JSX.Element {
-  const { min, max, value, setValue } = props
+  const { min, max, name, value, setValue } = props
+  const dispatch = useDispatch()
 
   const [positive1Range, setPositive1Range] = useState<string>(getNextRangeNum(value, min, max, 1))
   const [positive2Range, setPositive2Range] = useState<string>(getNextRangeNum(value, min, max, 2))
@@ -30,12 +33,19 @@ function NumSelect(props: Props): JSX.Element {
 
   const handleMouseWheel = (event: React.WheelEvent): void => {
     event.preventDefault()
+    playSoundDir()
+
     if (event.deltaY < 0) {
-      playSoundDir()
       setValue((prevValue) => parseInt(getPrevRangeNum(prevValue, min, max, 1)))
     } else {
-      playSoundDir()
       setValue((prevValue) => parseInt(getNextRangeNum(prevValue, min, max, 1)))
+    }
+    if (name === 'hours') {
+      dispatch(setHours(value + 1))
+    } else if (name === 'minutes') {
+      dispatch(setMinutes(value + 1))
+    } else if (name === 'seconds') {
+      dispatch(setSeconds(value + 1))
     }
   }
 
