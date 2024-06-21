@@ -39,15 +39,22 @@ function NumSelect(props: Props): JSX.Element {
 
     if (event.deltaY < 0) {
       setValue((prevValue) => parseInt(getPrevRangeNum(prevValue, min, max, 1)))
+      if (name === 'hours') {
+        dispatch(setHours(parseInt(getPrevRangeNum(value, min, max, 1))))
+      } else if (name === 'minutes') {
+        dispatch(setMinutes(parseInt(getPrevRangeNum(value, min, max, 1))))
+      } else if (name === 'seconds') {
+        dispatch(setSeconds(parseInt(getPrevRangeNum(value, min, max, 1))))
+      }
     } else {
       setValue((prevValue) => parseInt(getNextRangeNum(prevValue, min, max, 1)))
-    }
-    if (name === 'hours') {
-      dispatch(setHours(value + 1))
-    } else if (name === 'minutes') {
-      dispatch(setMinutes(value + 1))
-    } else if (name === 'seconds') {
-      dispatch(setSeconds(value + 1))
+      if (name === 'hours') {
+        dispatch(setHours(parseInt(getNextRangeNum(value, min, max, 1))))
+      } else if (name === 'minutes') {
+        dispatch(setMinutes(parseInt(getNextRangeNum(value, min, max, 1))))
+      } else if (name === 'seconds') {
+        dispatch(setSeconds(parseInt(getNextRangeNum(value, min, max, 1))))
+      }
     }
   }
 
@@ -79,7 +86,7 @@ function NumSelect(props: Props): JSX.Element {
   }, [value])
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown)
 
     return ()=> {
       window.removeEventListener('keydown', handleKeyDown)
@@ -106,4 +113,3 @@ function NumSelect(props: Props): JSX.Element {
 }
 
 export default NumSelect
-

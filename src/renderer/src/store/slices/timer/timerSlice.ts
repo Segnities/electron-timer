@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 interface TimerSliceState {
   started: boolean
   stopped: boolean
+  alertSound: boolean
   hours: number
   minutes: number
   seconds: number
@@ -10,7 +11,8 @@ interface TimerSliceState {
 
 const initialState: TimerSliceState = {
   started: false,
-  stopped: true,
+  stopped: false,
+  alertSound: false,
   hours: 0,
   minutes: 0,
   seconds: 0
@@ -48,6 +50,12 @@ export const timerSlice = createSlice({
     },
     continueTimer(state) {
       state.stopped = false
+    },
+    playAlertSound(state) {
+      state.alertSound = true
+    },
+    stopAlertSound(state) {
+      state.alertSound = false
     }
   }
 })
@@ -60,6 +68,8 @@ export const {
   setSeconds,
   startTimer,
   stopTimer,
-  continueTimer
+  continueTimer,
+  playAlertSound,
+  stopAlertSound
 } = timerSlice.actions
 export default timerSlice.reducer
