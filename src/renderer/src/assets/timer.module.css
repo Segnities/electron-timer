@@ -43,8 +43,8 @@
    position: absolute;
    top: 0;
    left: 50%;
-   width: 200%;
-   height: 200%;
+   width: var(--wave-size, 200%);
+   height: var(--wave-size, 200%);
    background: black;
    transform: translate(-50%, -75%);
 }

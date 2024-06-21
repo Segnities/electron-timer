@@ -34,10 +34,15 @@ function Timer(): JSX.Element {
     return () => clearInterval(countdown)
   }, [hoursState, minutesState, secondsState, stopped])
 
+  const totalSeconds = hours * 3600 + minutes * 60 + seconds
+  const remainingSeconds = hoursState * 3600 + minutesState * 60 + secondsState
+  const percentage = remainingSeconds / totalSeconds
+  const waveSize = 1 + 399 * (1 - percentage)
+
   return (
     <div className={styles['timer-container']}>
       <div className={styles['circle']}>
-        <div className={styles['wave']}>
+        <div className={styles['wave']} style={{ '--wave-size': `${waveSize}%` } as React.CSSProperties}>
           <div className={styles['state-container']}>
             <span>{toRangeNum(hoursState)}:</span>
             <span>{toRangeNum(minutesState)}:</span>

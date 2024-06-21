@@ -11,7 +11,7 @@ function App(): JSX.Element {
 
   const playAlertSound = (): void => {
     if (!alertSoundRef.current) {
-      alertSoundRef.current = new Audio('/audio/timer-alart.wav')
+      alertSoundRef.current = new Audio('/audio/timer-alert.wav')
       alertSoundRef.current.volume = 0.9
       alertSoundRef.current.loop = true
     }
