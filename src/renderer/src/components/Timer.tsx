@@ -6,20 +6,12 @@ import toRangeNum from '@renderer/utils/toRangeNum'
 import { playAlertSound } from '@renderer/store/slices/timer/timerSlice'
 
 function Timer(): JSX.Element {
-  const { hours, minutes, seconds, alertSound, stopped } = useSelector((state: RootState) => state.timer)
+  const { hours, minutes, seconds, stopped } = useSelector((state: RootState) => state.timer)
   const [hoursState, setHoursState] = useState<number>(hours)
   const [minutesState, setMinutesState] = useState<number>(minutes)
   const [secondsState, setSecondsState] = useState<number>(seconds)
 
   const dispatch = useDispatch()
-
-  const playSoundDir = (): void => {
-    if (alertSound) {
-      const audio = new Audio('/audio/timer-alert.wav')
-      audio.volume = 0.9
-      audio.play()
-    }
-  }
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -41,10 +33,6 @@ function Timer(): JSX.Element {
     }, 1000)
     return () => clearInterval(countdown)
   }, [hoursState, minutesState, secondsState, stopped])
-
-  useEffect(() => {
-    playSoundDir()
-  }, [alertSound])
 
   return (
     <div className={styles['timer-container']}>
